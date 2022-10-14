@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import fileUpload from 'express-fileupload'
 
 import router from './router.js'
 
@@ -9,6 +10,8 @@ const DB_URL = `mongodb+srv://isin:isin@cluster0.w7orbdc.mongodb.net/?retryWrite
 const app = express()
 
 app.use(express.json())
+app.use(express.static('static'))
+app.use(fileUpload())
 app.use('/api', router)
 
 const startApp = async () => {
